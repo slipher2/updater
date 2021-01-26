@@ -21,7 +21,7 @@ steps:
     tar -xzf qt-everywhere-src-5.14.2.tar.xz
     cd qt-everywhere-src-5.14.2
     MODULES=qtbase,qtquickcontrols,qtquickcontrols2,qtsvg,qtgraphicaleffects
-    ./configure -opensource -confirm-license -release -optimize-size -no-shared -no-framework -static --c++std=14 -nomake tests -nomake tools -nomake examples "--prefix=$PWD/qt"
+    ./configure -opensource -confirm-license -release -optimize-size -no-shared -no-framework -static --c++std=14 -nomake tests -nomake tools -nomake examples "--prefix=$PWD/../qt"
     eval make -j`sysctl -n hw.logicalcpu` module-{$MODULES} || eval make -j`sysctl -n hw.logicalcpu` module-{$MODULES} 
     eval make module-{$MODULES}-install_subtargets
   displayName: 'Build Qt'
