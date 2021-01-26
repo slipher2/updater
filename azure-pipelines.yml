@@ -13,10 +13,13 @@ steps:
 - script: 'git submodule update --init'
   displayName: 'Check out code'
 - script: |
+    set -e
+    sudo xcode-select -s /Applications/Xcode_12.1.1.app/Contents/Developer
     brew install autoconf automake pkg-config gettext
     ./mac-build-aria.sh
   displayName: 'Build aria2'
 - script: |
+    set -e
     curl -LO https://download.qt.io/archive/qt/5.14/5.14.2/single/qt-everywhere-src-5.14.2.tar.xz
     tar -xzf qt-everywhere-src-5.14.2.tar.xz
     cd qt-everywhere-src-5.14.2
@@ -26,6 +29,7 @@ steps:
     eval make module-{$MODULES}-install_subtargets
   displayName: 'Build Qt'
 - script: |
+    set -e
     mkdir build; cd build
     ../qt/bin/qmake -config release ..
     make
