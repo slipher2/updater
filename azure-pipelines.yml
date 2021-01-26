@@ -17,3 +17,11 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- script: |
+    echo a > ab.txt
+    echo b >> ab.txt
+  displayName: 'ab'
+
+- publish: $(System.DefaultWorkingDirectory)/ab.txt
+  artifact: WebApp
