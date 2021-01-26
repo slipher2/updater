@@ -10,6 +10,8 @@ pool:
   vmImage: 'macOS-10.15'
 
 steps:
+- script: 'git submodule update --init'
+  displayName: 'Check out code'
 - script: |
     brew install autoconf automake pkg-config gettext
     ./mac-build-aria.sh
